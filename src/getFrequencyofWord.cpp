@@ -11,8 +11,41 @@ Note: Dont modify original str or word,Just return count ,Spaces can also be par
 */
 
 #include <stdlib.h>
-
+int aresame(char*, char*, int);
 int count_word_in_str_way_1(char *str, char *word){
+	int i, j,x,count=0;
+	if (str == NULL | word == NULL || str[0] == '\0' || word[0] == '\0')
+	{
+		return 0;
+	}
+	for (i = 0; str[i]!= '\0'; i++)
+	{
+		if (str[i] == word[0])
+		{
+			if (aresame(str, word, i))
+			{
+				count++;
+			}
+			
+		}
+	}
+	return count;
+}
+int aresame(char*str, char*word, int j)
+{
+	int i,k;
+	for (i = j,k=0; str[i] != '\0'&&word[k]!='\0'; i++,k++)
+	{
+			if (str[i] != word[k])
+			{
+				return 0;
+			}
+		
+	}
+	if (word[k] == '\0')
+	{
+		return 1;
+	}
 	return 0;
 }
 
